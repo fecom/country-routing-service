@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: country-routing-service
+app:
+  routing:
+    data-url: "https://raw.githubusercontent.com/mledoze/countries/master/countries.json"
+
+logging:
+  level:
+    root: INFO                             # Default global logging level
+    com.pwc.routing: TRACE                 # Turns on DEBUG logs for your code
+    org.springframework.web: INFO          # Clean, readable web traffic logging
+  file:
+    name: "country-routing-service.log"
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss:SSS Z} %-5level %logger - %msg%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss:SSS Z} %-5level %logger - %msg%n"
