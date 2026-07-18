@@ -3,7 +3,12 @@ spring:
     name: country-routing-service
 app:
   routing:
-    data-url: "https://raw.githubusercontent.com/mledoze/countries/master/countries.json"
+    countries:
+      data:
+        source: "web"
+        path: "https://raw.githubusercontent.com/mledoze/countries/master/countries.json"
+#        source: "file"
+#        path: "classpath:countries.json"
 
 logging:
   level:
