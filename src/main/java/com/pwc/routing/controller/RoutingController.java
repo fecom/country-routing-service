@@ -3,6 +3,8 @@ package com.pwc.routing.controller;
 import com.pwc.routing.dto.RouteResponse;
 import com.pwc.routing.service.RoutingService;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import jakarta.validation.constraints.Pattern;
 
 import org.springframework.validation.annotation.Validated;
@@ -23,6 +25,17 @@ public class RoutingController {
         this.routingService = routingService;
     }
 
+    @Operation(
+        summary = "Find land route between countries"
+    )
+    @ApiResponse(
+        responseCode = "200",
+        description = "Route found"
+    )
+    @ApiResponse(
+        responseCode = "400",
+        description = "Route not found"
+    )
     @GetMapping("/{origin}/{destination}")
     public RouteResponse getRoute(
         @PathVariable
