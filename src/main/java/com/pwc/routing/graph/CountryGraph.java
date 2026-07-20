@@ -8,7 +8,7 @@ public final class CountryGraph {
     private final Map<String, Set<String>> neighbours;
 
     public CountryGraph(Map<String, Set<String>> neighbours) {
-        this.neighbours = neighbours;
+        this.neighbours = Map.copyOf(neighbours);
     }
 
     public Set<String> neighboursOf(String country) {
