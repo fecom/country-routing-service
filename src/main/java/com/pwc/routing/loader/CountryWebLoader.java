@@ -22,9 +22,10 @@ public class CountryWebLoader implements CountryLoader {
 
     @Override
     public List<Country> load() {
-        return countryHttpClient.fetchCountries()
-                .stream()
-                .filter(country -> country.cca3() != null)
-                .toList();
+        return countryHttpClient.fetch()
+            .stream()
+            .filter(country -> country.cca3() != null)
+            .toList();
     }
+
 }

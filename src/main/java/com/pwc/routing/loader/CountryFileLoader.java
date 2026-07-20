@@ -8,8 +8,6 @@ import org.springframework.stereotype.Component;
 import tools.jackson.core.type.TypeReference;
 import tools.jackson.databind.ObjectMapper;
 
-import java.io.IOException;
-import java.util.Arrays;
 import java.util.List;
 
 @Component
@@ -38,9 +36,12 @@ public class CountryFileLoader implements CountryLoader {
     @Override
     public List<Country> load() {
         try (var inputStream = resourceLoader.getResource(path).getInputStream()) {
-            return objectMapper.readValue(inputStream, new TypeReference<>() {
-            });
-        } catch (IOException e) {
+            List<Country> countries = objectMapper.readValue(inputStream, new TypeReference<>() {});
+            if (countries.isEmpty()) {
+                throw new IllegalStateException("Countries dataset is empty");
+            }
+            return countries;
+        } catch (Exception e) {
             throw new IllegalStateException("Cannot load countries from resource", e);
         }
     }
