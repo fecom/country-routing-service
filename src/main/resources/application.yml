@@ -1,6 +1,3 @@
-spring:
-  application:
-    name: country-routing-service
 app:
   routing:
     countries:
@@ -20,3 +17,12 @@ logging:
   pattern:
     console: "%d{yyyy-MM-dd HH:mm:ss:SSS Z} %-5level %logger - %msg%n"
     file: "%d{yyyy-MM-dd HH:mm:ss:SSS Z} %-5level %logger - %msg%n"
+
+server:
+  shutdown: graceful
+
+spring:
+  application:
+    name: country-routing-service
+  lifecycle:
+    timeout-per-shutdown-phase: 10s
