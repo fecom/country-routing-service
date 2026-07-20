@@ -1,0 +1,6 @@
+app:
+  routing:
+    countries:
+      data:
+        source: "file"
+        path: "classpath:countries.json"
